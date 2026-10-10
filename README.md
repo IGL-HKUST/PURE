@@ -44,9 +44,7 @@
 
 **PURE** post-trains a feed-forward 3D model on unlabeled video. Supervision comes from a monocular geometry teacher (MoGe), dynamic masks (Grounded SAM 2), and dense matches (GIM-RoMa). The architecture and the inference cost stay the same as the base model (VGGT, Pi3, or Depth Anything 3).
 
-<div align="center">
-  <img src="assets/teaser.jpg" width="100%" alt="PURE teaser: reconstruction before and after post-training">
-</div>
+<img src="assets/teaser.jpg" width="1400" alt="PURE teaser: reconstruction before and after post-training">
 
 ---
 
