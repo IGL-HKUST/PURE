@@ -31,7 +31,7 @@
 <p>
   <a href="https://doi.org/10.1145/3767308.3836296"><img src="https://img.shields.io/badge/ACM%20MM-2026-blue" alt="ACM MM 2026"></a>
   &nbsp;&nbsp;
-  <a href="https://doi.org/10.1145/3767308.3836296"><img src="https://img.shields.io/badge/Paper-ACM%20DL-red" alt="Paper"></a>
+  <a href="https://arxiv.org/abs/2610.14698"><img src="https://img.shields.io/badge/Paper-arXiv-red" alt="arXiv"></a>
   &nbsp;&nbsp;
   <a href="https://funnyguy525.github.io/PURE-Page/"><img src="https://img.shields.io/badge/Project-Page-orange" alt="Project page"></a>
   &nbsp;&nbsp;
