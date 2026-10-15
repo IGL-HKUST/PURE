@@ -1,1 +1,2 @@
-torch>=2.1
+# Hugging Face Spaces build entry; core users can install -e . instead.
+-e .[space]

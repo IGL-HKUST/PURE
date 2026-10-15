@@ -1,0 +1,67 @@
+{
+  "repository": "FunnyGuy525/RefinedModel",
+  "revision": "45b24b6ec0963003281189455a2e04d517634133",
+  "checked_on": "2026-10-15",
+  "files": {
+    "pi3.bin": {
+      "bytes": 3696392169,
+      "lfs_sha256": "8c893f0be37a1127a0bf1e93485800c24205ed23d9f76efd4eafbd53d85d1a07",
+      "download_url": "https://huggingface.co/FunnyGuy525/RefinedModel/resolve/45b24b6ec0963003281189455a2e04d517634133/pi3.bin",
+      "tensor_count": 1238,
+      "tensor_elements": 923979957,
+      "metadata_bytes_read": 228383,
+      "full_file_downloaded": true,
+      "full_file_hash_verified": true
+    },
+    "da3.bin": {
+      "bytes": 4822393743,
+      "lfs_sha256": "76258c83480d9883f84963b607798b8567b1d02c874ec0f041538290dd63f603",
+      "download_url": "https://huggingface.co/FunnyGuy525/RefinedModel/resolve/45b24b6ec0963003281189455a2e04d517634133/da3.bin",
+      "tensor_count": 847,
+      "tensor_elements": 1205512455,
+      "metadata_bytes_read": 176320,
+      "full_file_downloaded": true,
+      "full_file_hash_verified": true
+    },
+    "vggt.bin": {
+      "bytes": 4632316016,
+      "lfs_sha256": "bc58a56082287352852c6e8abd48900fa200fd2dce2ca13701360cb42269d839",
+      "download_url": "https://huggingface.co/FunnyGuy525/RefinedModel/resolve/45b24b6ec0963003281189455a2e04d517634133/vggt.bin",
+      "tensor_count": 1341,
+      "tensor_elements": 1157941492,
+      "metadata_bytes_read": 284720,
+      "full_file_downloaded": true,
+      "full_file_hash_verified": true
+    }
+  },
+  "pi3_v2_compatibility": {
+    "matching_keys_and_shapes": 1238,
+    "missing": [],
+    "extra": [],
+    "shape_mismatches": []
+  },
+  "checkpoint_training_stage": "not supplied",
+  "paper_metrics_verified": false,
+  "da3_source_sha256": "60e8b85e7f8a38c731b13cdc987b71b7101159b3168aeea33e158c05ab381d1a",
+  "da3_compatibility": {
+    "matching_keys_and_shapes": 847,
+    "missing": [],
+    "extra": [],
+    "shape_mismatches": []
+  },
+  "vggt_compatibility": {
+    "matching_keys_and_shapes": 1341,
+    "missing": [],
+    "extra": [],
+    "shape_mismatches": []
+  },
+  "full_weight_validation": {
+    "date": "2026-10-15",
+    "gpu": "NVIDIA H20-3e",
+    "torch": "2.6.0+cu124",
+    "selfevo_cases": 12,
+    "consecutive_video_frames": 48,
+    "sky_filter": "SegFormer B2 ADE20K",
+    "paper_metrics_reproduced": false
+  }
+}

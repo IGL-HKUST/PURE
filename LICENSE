@@ -1,3 +1,7 @@
+Licensing scope: the MIT license below applies to the original PURE release
+and newly authored reference training utilities. Recovered model components
+retain their third-party terms; see THIRD_PARTY_NOTICES.md and LICENSES/.
+
 MIT License
 
 Copyright (c) 2026 PURE authors

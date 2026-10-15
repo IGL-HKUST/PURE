@@ -1,0 +1,17 @@
+{
+  "public_base_commit": "5a05e5b65df76ed289d2cc51d211770bb58c0a10",
+  "archive_sha256": "c58137f1ee0d29389d3f73439a056186b5a7b9c7a26dc8c0610779f81c3ffb88",
+  "public_core_sha256": {
+    "pure/loss.py": "6355ee1b35acddd9aa48d0c8f8d78716ed415ad052fe9397784644c6e017e9f0",
+    "pure/utils/geometry.py": "615afb948739d41851c9e5620f3e0ab702465ad1f7b9c5207effef63e85035d9",
+    "pure/utils/alignment.py": "37823250c022bb1c6cc162d287ea7b6a408440e772629181030aac43a0b70d1e"
+  },
+  "pi3_architecture": "v2 only",
+  "da3_source_sha256": "60e8b85e7f8a38c731b13cdc987b71b7101159b3168aeea33e158c05ab381d1a",
+  "local_modifications": {
+    "pure/loss.py": {
+      "sha256": "8aeb4f8e77c0f4444af427caa926aff434b464299d0429309ce1b1763764efce",
+      "reason": "Skip equal-depth ordinal pairs to prevent division by zero; return differentiable zero when no ordered pair exists."
+    }
+  }
+}

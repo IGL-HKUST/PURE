@@ -1,0 +1,106 @@
+{
+  "repository": "https://github.com/Self-Evo/SelfEvo",
+  "revision": "b0e0f4aa23627cb411167fdfd1f325dc774151fe",
+  "files": [
+    {
+      "path": "examples/drift-straight/00000.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00000.jpg",
+      "bytes": 113778,
+      "sha256": "9f5c4db6efdee637ef5998299744b60a3bcdb50f115194f00cdbce0873fedc8f"
+    },
+    {
+      "path": "examples/drift-straight/00005.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00005.jpg",
+      "bytes": 132064,
+      "sha256": "3738795bfd7a2f204eb22e217fa4cf9d4ca3226653d093d0174d0bda828a52db"
+    },
+    {
+      "path": "examples/drift-straight/00010.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00010.jpg",
+      "bytes": 120308,
+      "sha256": "446d25234284163b1b6b49c0b138770e05918438ebfeea77bd39d4539c77099d"
+    },
+    {
+      "path": "examples/drift-straight/00015.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00015.jpg",
+      "bytes": 119827,
+      "sha256": "ed742c80865afa153f6d844bd9aa439d45724d1d140f68345fb46ce083df0d86"
+    },
+    {
+      "path": "examples/drift-straight/00020.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00020.jpg",
+      "bytes": 109854,
+      "sha256": "54f5871a7ab1f4c29b81fa3318f2271266526cd31f34b080956c519a4ed0b8af"
+    },
+    {
+      "path": "examples/drift-straight/00025.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00025.jpg",
+      "bytes": 109359,
+      "sha256": "7cfc6bebcfe9d76bf728385bb768acce3c1a3af609191893c243df08db14657a"
+    },
+    {
+      "path": "examples/drift-straight/00030.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00030.jpg",
+      "bytes": 105218,
+      "sha256": "6db42efecf97eaacd56bb9b22ac1ab91c6c81bd725dc1e9af8e9fc455dca1bed"
+    },
+    {
+      "path": "examples/drift-straight/00035.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00035.jpg",
+      "bytes": 101574,
+      "sha256": "5a1cc1552bf480ee50b4271066653cda71ecf529b7b759a311bfca6dd1ddfa23"
+    },
+    {
+      "path": "examples/drift-straight/00040.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00040.jpg",
+      "bytes": 104340,
+      "sha256": "e53e57adf9bf8643f221da4b755be2cfe9368633ef5f6a2bbcad5e825870d7f0"
+    },
+    {
+      "path": "examples/drift-straight/00045.jpg",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/drift-straight/00045.jpg",
+      "bytes": 105538,
+      "sha256": "f26913323e902606bcb1a0c31c8168972c21397e0a43e0a385efae5cf963568f"
+    },
+    {
+      "path": "examples/motorcycle.mp4",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/motorcycle.mp4",
+      "bytes": 36280356,
+      "sha256": "99a7b1ebab027fc98684d28650711d39ee0e23e95b26a60d85856534da1dc866"
+    },
+    {
+      "path": "examples/penguin.mp4",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/penguin.mp4",
+      "bytes": 12901036,
+      "sha256": "45cb3d7f8dd3cfa3091bb28f067bbd77ed02bb793e99d2edf41963b079835ad2"
+    },
+    {
+      "path": "examples/sport.mp4",
+      "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/sport.mp4",
+      "bytes": 25875956,
+      "sha256": "72a59ae570d700f38df5ce954d494203b0a3dfc7705cc56494f139ed40a5aafe"
+    }
+  ],
+  "cases": [
+    {
+      "name": "motorcycle",
+      "kind": "video",
+      "frame_count": 48
+    },
+    {
+      "name": "penguin",
+      "kind": "video",
+      "frame_count": 48
+    },
+    {
+      "name": "sport",
+      "kind": "video",
+      "frame_count": 48
+    },
+    {
+      "name": "drift-straight",
+      "kind": "image_sequence",
+      "frame_count": 10
+    }
+  ]
+}

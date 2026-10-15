@@ -1,0 +1,156 @@
+{
+  "da3": {
+    "revision": "3d835ec1a5802d64a8b8b15f817a1ab54809bfe4",
+    "files": {
+      "model/dinov2/dinov2.py": {
+        "upstream_sha256": "5d8e603113731365b3f46a3df4d159ad58f8723ec011440bf1961a4cbe101ca2",
+        "vendored_sha256": "b36c724238ee033c91cbdbeb0e3d8f8fb28cd9e8053a215a6d26072fe994d812"
+      },
+      "model/dinov2/layers/__init__.py": {
+        "upstream_sha256": "321a97ffc00375d6d48569cbc851a38e7d2dc8bbdbfcffbee722c6c27783acda",
+        "vendored_sha256": "321a97ffc00375d6d48569cbc851a38e7d2dc8bbdbfcffbee722c6c27783acda"
+      },
+      "model/dinov2/layers/attention.py": {
+        "upstream_sha256": "d9db2bd66c612df689ec19aa2b60138c4185e38c8cfaaef48fc17f39a5b17c81",
+        "vendored_sha256": "d9db2bd66c612df689ec19aa2b60138c4185e38c8cfaaef48fc17f39a5b17c81"
+      },
+      "model/dinov2/layers/block.py": {
+        "upstream_sha256": "88924cf5cd9fb18b17a8329e4c9910528205c302d8be40be29ad74e97ae7a3b8",
+        "vendored_sha256": "88924cf5cd9fb18b17a8329e4c9910528205c302d8be40be29ad74e97ae7a3b8"
+      },
+      "model/dinov2/layers/drop_path.py": {
+        "upstream_sha256": "80b5cc50297f3049d313c5659c1244901407bdac80cf424c5d7ed64ae79cd141",
+        "vendored_sha256": "80b5cc50297f3049d313c5659c1244901407bdac80cf424c5d7ed64ae79cd141"
+      },
+      "model/dinov2/layers/layer_scale.py": {
+        "upstream_sha256": "23aba2710d7d425b5abd50c006edef9c9224360d6499171b6c1ec18ef73c0b00",
+        "vendored_sha256": "23aba2710d7d425b5abd50c006edef9c9224360d6499171b6c1ec18ef73c0b00"
+      },
+      "model/dinov2/layers/mlp.py": {
+        "upstream_sha256": "4f17c26120d04e4e4368b07a2396a977044b00d1dcbf1bbd1a9d3447be1aa6cf",
+        "vendored_sha256": "4f17c26120d04e4e4368b07a2396a977044b00d1dcbf1bbd1a9d3447be1aa6cf"
+      },
+      "model/dinov2/layers/patch_embed.py": {
+        "upstream_sha256": "72f14d7b3daf3f545ba93c085b0a90f3b63efcf1a14f8d694dc77763c0607528",
+        "vendored_sha256": "72f14d7b3daf3f545ba93c085b0a90f3b63efcf1a14f8d694dc77763c0607528"
+      },
+      "model/dinov2/layers/rope.py": {
+        "upstream_sha256": "dcd09808cf03ceae7abfdcbe6805ee36990412b5308b09a86c4b51a040cff38b",
+        "vendored_sha256": "dcd09808cf03ceae7abfdcbe6805ee36990412b5308b09a86c4b51a040cff38b"
+      },
+      "model/dinov2/layers/swiglu_ffn.py": {
+        "upstream_sha256": "f0e0bab6e9e835b81c53bd69616af43d254a91af4b119923160b7df1602b1562",
+        "vendored_sha256": "f0e0bab6e9e835b81c53bd69616af43d254a91af4b119923160b7df1602b1562"
+      },
+      "model/dinov2/vision_transformer.py": {
+        "upstream_sha256": "c28650e5db0b578745f5a41336709d54d08f952bc08cf1bd2009e2b765111221",
+        "vendored_sha256": "a6841e6b2468eced16dc073ec1b1eeb1bfd7d9c95e0a471ae568249b3c4e40eb"
+      },
+      "model/dualdpt.py": {
+        "upstream_sha256": "6ef19b3cb46847830b615e4f8e30621708a3a63500a9fc4cbdee28962bd4bd06",
+        "vendored_sha256": "eb9c8a9dbbd5f8033f740f9fd10e1f6de4d30b2ab983a26ae2475bb5366111dc"
+      },
+      "model/dpt.py": {
+        "upstream_sha256": "d4f70e867cb31fd26e807746b63fe21517e5385464acee0096a3021ec928576c",
+        "vendored_sha256": "ff372f819db7681f7000a3ef4a3a5cbe1e80fb51754f78fb122e9bf877860368"
+      },
+      "model/cam_dec.py": {
+        "upstream_sha256": "f7bc81d846b786e314c03eaaf809126505fa0c82eb5177b95eadbfad5beefd63",
+        "vendored_sha256": "f7bc81d846b786e314c03eaaf809126505fa0c82eb5177b95eadbfad5beefd63"
+      },
+      "model/utils/transform.py": {
+        "upstream_sha256": "98d5c499f40e6e3e63cdaf0e269b8eeeb998ed125bcd63da41e2dec9ad32b8b9",
+        "vendored_sha256": "98d5c499f40e6e3e63cdaf0e269b8eeeb998ed125bcd63da41e2dec9ad32b8b9"
+      },
+      "model/utils/head_utils.py": {
+        "upstream_sha256": "efed71ecd3b742d5969d1a938bbf34c9923d202dfd5232f204641c4674f0bd6b",
+        "vendored_sha256": "efed71ecd3b742d5969d1a938bbf34c9923d202dfd5232f204641c4674f0bd6b"
+      },
+      "model/reference_view_selector.py": {
+        "upstream_sha256": "5e1238298a0053e76eab1f2cfd207ae8b0f30fb441c24c915320efed349301e3",
+        "vendored_sha256": "bb9a2bb1f036b484abd82fb165e28ca3d990146f04345adfd5267ba955b85082"
+      },
+      "utils/logger.py": {
+        "upstream_sha256": "03ea0032564443ae6df63aa88ab9e4e63b5933ed10463acee607d0bea5836910",
+        "vendored_sha256": "03ea0032564443ae6df63aa88ab9e4e63b5933ed10463acee607d0bea5836910"
+      },
+      "utils/constants.py": {
+        "upstream_sha256": "631d18da0159ef6f4a30be446b733b60cbc10f7b867ef61fabeddf89ab380612",
+        "vendored_sha256": "631d18da0159ef6f4a30be446b733b60cbc10f7b867ef61fabeddf89ab380612"
+      }
+    }
+  },
+  "vggt": {
+    "revision": "a288dd0f14786c93483e45524328726ab7b1b4ce",
+    "files": {
+      "layers/__init__.py": {
+        "upstream_sha256": "e3c28c7b775165b6844000eb69f44d104d6c3803ac7da5d59f6ac3ecfb46d9d8",
+        "vendored_sha256": "e3c28c7b775165b6844000eb69f44d104d6c3803ac7da5d59f6ac3ecfb46d9d8"
+      },
+      "layers/attention.py": {
+        "upstream_sha256": "883b82b8fd1d833e4b7060a97cff44aa677288e2f91415763d0deac48d111469",
+        "vendored_sha256": "883b82b8fd1d833e4b7060a97cff44aa677288e2f91415763d0deac48d111469"
+      },
+      "layers/block.py": {
+        "upstream_sha256": "4f2303fb83b63655d17aac7d4937772093dcc5b27c73b6ea2f727a4068131b51",
+        "vendored_sha256": "4f2303fb83b63655d17aac7d4937772093dcc5b27c73b6ea2f727a4068131b51"
+      },
+      "layers/drop_path.py": {
+        "upstream_sha256": "b9f8236e86054b9d9a71275efcad2a9ecaa1f86b529d4b8d6109ddb5e806f67a",
+        "vendored_sha256": "b9f8236e86054b9d9a71275efcad2a9ecaa1f86b529d4b8d6109ddb5e806f67a"
+      },
+      "layers/layer_scale.py": {
+        "upstream_sha256": "83586eaa81ef11828b1001f3dd85747ba362df23ddb57c8454b2eba279f5a558",
+        "vendored_sha256": "83586eaa81ef11828b1001f3dd85747ba362df23ddb57c8454b2eba279f5a558"
+      },
+      "layers/mlp.py": {
+        "upstream_sha256": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa",
+        "vendored_sha256": "255825c73b60a916dd00eb1e38aacbcdbf316e40d6a005efb46e245b7edb43aa"
+      },
+      "layers/patch_embed.py": {
+        "upstream_sha256": "c2543ec293951d081db662b2125027625f6e632971630facaa7f911c2377d335",
+        "vendored_sha256": "c2543ec293951d081db662b2125027625f6e632971630facaa7f911c2377d335"
+      },
+      "layers/rope.py": {
+        "upstream_sha256": "c56b073724f4d56cc531e381835a2c3dc348f192aefd9e855e3e59ab3c7d6641",
+        "vendored_sha256": "c56b073724f4d56cc531e381835a2c3dc348f192aefd9e855e3e59ab3c7d6641"
+      },
+      "layers/swiglu_ffn.py": {
+        "upstream_sha256": "af287ee5b7e6a2a5608ed78cf8d392a00191718825a3889c224ccaa0fd914089",
+        "vendored_sha256": "af287ee5b7e6a2a5608ed78cf8d392a00191718825a3889c224ccaa0fd914089"
+      },
+      "layers/vision_transformer.py": {
+        "upstream_sha256": "857932a5a7cf8fa062535464b4831493544715cdfb729648a83a10098a5eae87",
+        "vendored_sha256": "ca1024526ad6e21febc16789cc2484cc3de248227c623dbab833915048393c47"
+      },
+      "models/aggregator.py": {
+        "upstream_sha256": "c994d7231eda2380f208355a64bce3cd7c4b97ef06393355e632415bfc1513e5",
+        "vendored_sha256": "b028546327114d5875273713b3d6c919f966b8e1c1b0735608a231a2c738a079"
+      },
+      "heads/camera_head.py": {
+        "upstream_sha256": "d177f3d64d53210209b7bbb8496faaaec91f3fc51d04a4ee8d9d6b70f053e132",
+        "vendored_sha256": "2d0e41101d6a080842047c23ce0b1ddd0c6d2a74cb5026103f2a7aac93f5e926"
+      },
+      "heads/dpt_head.py": {
+        "upstream_sha256": "b83ff030043f2ba808afb0c0ebc2f40f1d2ddc9d0b4b847bdfd53670f2d03e17",
+        "vendored_sha256": "b83ff030043f2ba808afb0c0ebc2f40f1d2ddc9d0b4b847bdfd53670f2d03e17"
+      },
+      "heads/head_act.py": {
+        "upstream_sha256": "428bdb087f457b809a66e22d7d01147c1cb4dab43bb0d98bc61c7f05d8383a1e",
+        "vendored_sha256": "428bdb087f457b809a66e22d7d01147c1cb4dab43bb0d98bc61c7f05d8383a1e"
+      },
+      "heads/utils.py": {
+        "upstream_sha256": "2dce4c0dca1974a5250cc5d5d95bd3417e3ba9494978437a12d5ab6bbff4d4df",
+        "vendored_sha256": "2dce4c0dca1974a5250cc5d5d95bd3417e3ba9494978437a12d5ab6bbff4d4df"
+      },
+      "utils/pose_enc.py": {
+        "upstream_sha256": "845fc3a46cb851bebf0720b8fc2b9f34334ae8e11f1982376ba59f90ff18f22b",
+        "vendored_sha256": "845fc3a46cb851bebf0720b8fc2b9f34334ae8e11f1982376ba59f90ff18f22b"
+      },
+      "utils/rotation.py": {
+        "upstream_sha256": "ad3a904e243c6654f0aa5f1d0206ace5f2d61011bc1bf8f492b40e0b76cb2070",
+        "vendored_sha256": "ad3a904e243c6654f0aa5f1d0206ace5f2d61011bc1bf8f492b40e0b76cb2070"
+      }
+    }
+  }
+}

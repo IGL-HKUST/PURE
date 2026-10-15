@@ -306,7 +306,7 @@ class SSLoss(nn.Module):
         gt_depth = gt_depth_single[mask_single > 0]  # (N,)
         
         if gt_depth.shape[0] < 2:
-            return torch.tensor(0.0, device=pred_depth_single.device, dtype=pred_depth_single.dtype)
+            return pred_depth_single.reshape(-1)[:0].sum()
 
         depthmax = gt_depth.max()
         depthmin = gt_depth.min()
@@ -318,13 +318,15 @@ class SSLoss(nn.Module):
         index1 = torch.randperm(num_pixels, device=pred_depth.device)[:pair_num]
         index2 = torch.randperm(num_pixels, device=pred_depth.device)[:pair_num]
         
-        threshold_msk = (torch.abs(gt_depth[index1] - gt_depth[index2]) >= interval)
+        pair_diff = torch.abs(gt_depth[index1] - gt_depth[index2])
+        # Equal teacher depths carry no ordering and would divide by zero.
+        threshold_msk = (pair_diff >= interval) & (pair_diff > 0)
         
         index1 = index1[threshold_msk]
         index2 = index2[threshold_msk]
         
         if index1.shape[0] == 0:
-            return torch.tensor(0.0, device=pred_depth_single.device, dtype=pred_depth_single.dtype)
+            return pred_depth_single.reshape(-1)[:0].sum()
             
         gt_diff = torch.abs(gt_depth[index1] - gt_depth[index2])
         gt_oder = torch.sign(gt_depth[index1] - gt_depth[index2])

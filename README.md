@@ -1,6 +1,25 @@
-<div align="center">
+---
+title: PURE Reconstruction Studio
+emoji: 🌐
+colorFrom: blue
+colorTo: green
+sdk: gradio
+sdk_version: 5.49.1
+python_version: 3.11
+app_file: app.py
+pinned: false
+suggested_hardware: a10g-small
+---
 
-<h2>PURE: Refining Feed-forward 3D Reconstruction with Unlabeled Post-training</h2>
+# PURE: Refining Feed-forward 3D Reconstruction with Unlabeled Post-training
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2610.14698"><img src="https://img.shields.io/badge/arXiv-2610.14698-b31b1b.svg" alt="arXiv Paper"></a> &nbsp;
+  <a href="https://funnyguy525.github.io/PURE-Page/"><img src="https://img.shields.io/badge/Project-Page-Green" alt="Project Page"></a> &nbsp;
+  <a href="https://huggingface.co/cyun9286/PURE"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Weights-blue" alt="Hugging Face Weights"></a>
+</p>
+
+<div align="center">
 
 <p>
   Yaolong Zhu<sup>1</sup>,
@@ -18,9 +37,9 @@
 
 <p>
   <sup>1</sup> Guangdong Provincial Key Laboratory of Ultra High Definition Immersive Media Technology, Shenzhen Graduate School, Peking University
-  &nbsp;&nbsp;
+  <br>
   <sup>2</sup> The Hong Kong University of Science and Technology
-  &nbsp;&nbsp;
+  <br>
   <sup>3</sup> Pengcheng Laboratory
   <br>
   <sup>▲</sup> Project lead
@@ -28,117 +47,78 @@
   <sup>✉</sup> Co-corresponding authors
 </p>
 
-<p>
-  <a href="https://doi.org/10.1145/3767308.3836296"><img src="https://img.shields.io/badge/ACM%20MM-2026-blue" alt="ACM MM 2026"></a>
-  &nbsp;&nbsp;
-  <a href="https://arxiv.org/abs/2610.14698"><img src="https://img.shields.io/badge/Paper-arXiv-red" alt="arXiv"></a>
-  &nbsp;&nbsp;
-  <a href="https://funnyguy525.github.io/PURE-Page/"><img src="https://img.shields.io/badge/Project-Page-orange" alt="Project page"></a>
-  &nbsp;&nbsp;
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="License"></a>
+</div>
+
+<p align="center">
+  <b>Reconstruct 3D points, depth and camera poses from video or images with Pi3, DA3 Giant and VGGT.</b>
 </p>
 
-</div>
+## Demo
 
----
+### Web app
 
-**PURE** post-trains a feed-forward 3D model on unlabeled video. Supervision comes from a monocular geometry teacher (MoGe), dynamic masks (Grounded SAM 2), and dense matches (GIM-RoMa). The architecture and the inference cost stay the same as the base model (VGGT, Pi3, or Depth Anything 3).
-
-<img src="assets/teaser.jpg" width="1400" alt="PURE teaser: reconstruction before and after post-training">
-
----
-
-### 🖼️ Framework
-
-<div align="center">
-  <img src="assets/pipeline.jpg" width="100%" alt="PURE framework">
-</div>
-
-Given an unlabeled clip, the base model predicts depth and camera poses. PURE refines them with two branches: local geometry, using relative depth order and affine-invariant alignment to monocular pseudo points, and pose, using GIM-RoMa matches that pass dynamic, confidence, and cycle-consistency filters.
-
----
-
-## ⚙️ Setup
+Linux, Python 3.11 and a CUDA GPU. From the repository root:
 
 ```bash
-git clone https://github.com/jiah-cloud/PURE.git
-cd PURE
-pip install -r requirements.txt
+pip install -e '.[space]'
+PURE_MODEL_REPO=cyun9286/PURE python app.py
 ```
 
-`requirements.txt` lists `torch>=2.1`. A CPU wheel is enough for the check below.
+Open **http://localhost:7860** and upload a video or image sequence. The default uses **48 consecutive frames** and **removes sky**. Outputs: interactive 3D preview, PLY, camera poses, RGB/depth videos and ZIP.
 
----
+Public weights download on first use; no login is required. [Deployment and offline setup](docs/HUGGINGFACE_ZH.md).
 
-## 🎯 Objective
+### Command line
 
-This repository releases the training objective. `SSLoss` is the loss used in the paper. `pure/utils` provides the geometry and alignment helpers it calls: depth edges, focal recovery, mask-aware resize, anchor sampling, and robust scale-and-shift alignment.
+Run the bundled demos from the repository root:
 
-| Piece | Role |
-| --- | --- |
-| `pure/loss.py` | Ordinal depth, local affine-invariant geometry, and static correspondence, plus RoMa match filtering |
-| `pure/utils/alignment.py` | Robust scale-and-shift alignment inside the geometry loss |
-| `pure/utils/geometry.py` | Depth edges, focal recovery, mask-aware resize, and anchor sampling |
+```bash
+pip install -e '.[inference]'
+bash scripts/demo/run_demo.sh                         # Motorcycle + PURE (Pi3)
+bash scripts/demo/run_demo.sh --sample all --model all # Four samples × three models
+```
 
-For one clip, the base model predicts camera-frame points, world points, depth, and poses. `SSLoss` applies three terms.
+Use `--sample motorcycle|penguin|sport|drift-straight` and `--model pi3|da3|vggt` to select a demo. Results go to `outputs/demo/<sample>-<model>/`; use `--output` for a new run or `--dry-run` to inspect commands. Videos use the first 48 consecutive frames; drift-straight uses all 10 images.
 
-1. **Ordinal depth.** Random pixel pairs keep the teacher's depth order. The term does not depend on the teacher's absolute scale.
-2. **Local affine-invariant geometry.** Inside local balls, predicted points are aligned to pseudo points `P = d_mono * K_pre^{-1} p` with a per-ball scale and shift. Surface detail transfers without copying the teacher's global scale.
-3. **Static correspondence.** GIM-RoMa matches that survive the dynamic-mask, confidence, and cycle-consistency checks land on the same 3D point. Matches are sampled uniformly across the image.
+For your own video:
+
+```bash
+python scripts/demo/reconstruct.py \
+  --pretrained cyun9286/PURE --subfolder pi3 \
+  --video input.mp4 --frames 48 --output outputs/my-video
+```
+
+Choose `pi3`, `da3` or `vggt` with `--subfolder`. [Demo options](examples/README.md).
+
+## Python API
 
 ```python
-from pure import SSLoss, run_roma
+import torch
+from pure import PURE, PUREImageProcessor
 
-criterion = SSLoss()
-roma = run_roma(gim_roma, images, static_masks, dynamic_masks)  # or a precomputed dict
-loss, details = criterion(predictions, batch, roma)
+model = PURE.from_pretrained("cyun9286/PURE", subfolder="pi3").to("cuda")
+images = PUREImageProcessor().video("input.mp4", max_frames=48)
+with torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16):
+    predictions = model(images.unsqueeze(0).to("cuda"))
 ```
 
-### Tensors
+The API returns tensors. The CLI and Studio add sky filtering and exports. [Model formats and provenance](docs/WEIGHTS.md).
 
-`predictions`
+## Training
 
-- `local_points`: `(B, S, H, W, 3)` camera-frame points
-- `points`: `(B, S, H, W, 3)` world points used by the correspondence term
-
-`batch`
-
-- `depths`: `(B, S, H, W)` teacher depth
-- `valid_masks`: `(B, S, H, W)` bool
-- `dynamic_masks`: `(B, S, H, W)` bool, true on dynamic or sky pixels
-- `distill_results["xy"]`: `(B, S, H, W, 2)` ray directions, so the pseudo points are `(xy * depth, depth)`
-
-`run_roma` expects a module with `batch_match(img_a, img_b)` and `sample(matches, certainty, k)`, matching the GIM-RoMa interface used in training. A precomputed dictionary with the keys read in `SSLoss.correspondence_loss` is also accepted.
-
-Dataloaders, backbone wrappers, and the distributed training loop are outside this release. The section below records the schedule from the paper.
-
----
-
-## 🧪 Training setup
-
-- Optimizer: AdamW, learning rate `1e-5`, weight decay `0.05`, betas `(0.9, 0.95)`
-- Schedule: OneCycleLR, cosine, max learning rate `1e-5`
-- 4× H800, gradient accumulation 2, gradient clip 1.0
-- Views sampled from `[1, 24]`, aspect ratio in `[0.5, 2]`, about 160k–250k pixels
-- VGGT: 12k iterations, intermediate global attention only, about 20 h
-- Depth Anything 3: 5k iterations, same layer selection, about 8 h
-- Pi3: replace the pixel-shuffle point head with a multi-level convolutional head, then 10k iterations of head initialization and 5k of joint post-training
-
-Labeled synthetic data (OmniWorld, VKITTI, BEDLAM, PointOdyssey, Waymo) is mixed in to limit forgetting. The unlabeled real video is SpatialVID-HQ and Sekai-Real-Walking-HQ, about 5M frames.
-
----
-
-## ✅ Check
+Prepare aligned teacher caches using the [training guide](docs/TRAINING_INFERENCE_ZH.md) and [data format](docs/DATA_FORMAT.md), then run:
 
 ```bash
-python examples/smoke_test.py
+pip install -e '.[training]'
+python scripts/hub/download_weights.py --model da3 --output checkpoints
+bash scripts/train/run_train.sh \
+  --config configs/da3_posttrain.json --data data/da3_train \
+  --checkpoint checkpoints/da3.bin --output outputs/train-da3
 ```
 
-The script builds a synthetic two-view plane, runs `SSLoss`, and backpropagates. It does not download teacher models.
+Prefix with `GPUS=4` for single-node DDP. Pi3 and VGGT use their matching configs and checkpoints.
 
----
-
-## 📝 Citation
+## Citation
 
 ```bibtex
 @inproceedings{zhu2026pure,
@@ -153,8 +133,6 @@ The script builds a synthetic two-view plane, runs `SSLoss`, and backpropagates.
 }
 ```
 
----
-
-## 🤝 Acknowledgements
+## Acknowledgements
 
 PURE builds on [VGGT](https://github.com/facebookresearch/vggt), [Pi3](https://github.com/yyfz/Pi3), and [Depth Anything 3](https://github.com/ByteDance-Seed/Depth-Anything-3). Pseudo supervision uses [MoGe](https://github.com/microsoft/MoGe), [Grounded SAM 2](https://github.com/IDEA-Research/Grounded-SAM-2), and [GIM](https://github.com/xuelunshen/gim). The scale-and-shift solver follows [Track4World](https://github.com/TencentARC/Track4World).

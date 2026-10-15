@@ -1,0 +1,19 @@
+{
+  "model": "vggt",
+  "stage": "posttrain",
+  "train_head": false,
+  "train_camera": false,
+  "train_blocks": [
+    4,
+    11,
+    17,
+    23
+  ],
+  "steps": 12000,
+  "accumulation": 2,
+  "lr": 1e-05,
+  "seed": 0,
+  "save_every": 500,
+  "precision": "bf16",
+  "clip_grad": 1.0
+}

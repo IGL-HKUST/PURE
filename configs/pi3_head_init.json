@@ -1,0 +1,14 @@
+{
+  "stage": "head_init",
+  "train_head": true,
+  "decoder_start": 11,
+  "decoder_end": 36,
+  "steps": 10000,
+  "accumulation": 2,
+  "lr": 1e-05,
+  "seed": 0,
+  "save_every": 500,
+  "model": "pi3",
+  "precision": "bf16",
+  "clip_grad": 1.0
+}
