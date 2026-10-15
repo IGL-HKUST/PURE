@@ -1,16 +1,3 @@
----
-title: PURE Reconstruction Studio
-emoji: 🌐
-colorFrom: blue
-colorTo: green
-sdk: gradio
-sdk_version: 5.49.1
-python_version: 3.11
-app_file: app.py
-pinned: false
-suggested_hardware: a10g-small
----
-
 # PURE: Refining Feed-forward 3D Reconstruction with Unlabeled Post-training
 
 <p align="center">
