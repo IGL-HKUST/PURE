@@ -40,6 +40,16 @@
   <b>Reconstruct 3D points, depth and camera poses from video or images with Pi3, DA3 Giant and VGGT.</b>
 </p>
 
+<p align="center">
+  <img src="assets/teaser.jpg" alt="PURE reconstruction before and after post-training" width="100%">
+</p>
+
+## Pipeline
+
+<p align="center">
+  <img src="assets/pipeline.jpg" alt="PURE post-training pipeline" width="100%">
+</p>
+
 ## Demo
 
 ### Web app
