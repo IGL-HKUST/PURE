@@ -41,7 +41,13 @@
 </p>
 
 <p align="center">
-  <img src="assets/teaser.jpg" alt="PURE reconstruction before and after post-training" width="100%">
+  <a href="https://funnyguy525.github.io/PURE-Page/#long"><img src="assets/teaser.gif" alt="PURE long-sequence reconstruction: 2,000 consecutive frames with RGB input and a final overhead reveal" width="100%"></a>
+</p>
+
+<p align="center">
+  <b>PURE (DA3) · 2,000-frame video reconstruction</b><br>
+  A time-compressed preview of the full filtered point cloud, with RGB input and a final overhead reveal.<br>
+  <a href="https://funnyguy525.github.io/PURE-Page/#long">Watch the full 89-second video</a> · <a href="assets/teaser.mp4">Download MP4</a>
 </p>
 
 ## Pipeline
