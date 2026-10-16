@@ -46,8 +46,8 @@
 
 <p align="center">
   <b>PURE (DA3) · 2,000-frame video reconstruction</b><br>
-  A time-compressed preview of the full filtered point cloud, with RGB input and a final overhead reveal.<br>
-  <a href="https://funnyguy525.github.io/PURE-Page/#long">Watch the full 89-second video</a> · <a href="assets/teaser.mp4">Download MP4</a>
+  The complete 89-second reconstruction at original speed, with RGB input and a final overhead reveal.<br>
+  <a href="https://funnyguy525.github.io/PURE-Page/#long">Watch on the project page</a> · <a href="assets/teaser.mp4">Download full MP4 (89 seconds)</a>
 </p>
 
 ## Pipeline

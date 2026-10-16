@@ -1,16 +1,16 @@
 {
   "passed": true,
-  "frames": 134,
+  "frames": 528,
   "source_video": "pure-project-showcase/dist/assets/ride-long.mp4",
   "source_seconds": 89.417422,
-  "preview_seconds": 22.5,
-  "preview_time_compressed": true,
+  "preview_seconds": 89.42,
+  "preview_time_compressed": false,
   "source_points_unchanged": true,
   "source_video_frames": 2144,
   "source_unique_reconstruction_frames": 2000,
   "rgb_inset": true,
   "full_overhead_reveal": true,
-  "bytes": 9976271,
+  "bytes": 39651530,
   "model": "PURE (DA3)",
   "pose_source": "Camera Head",
   "clip_frames": 128,
@@ -21,6 +21,6 @@
   "full_video": "teaser.mp4",
   "preview": "teaser.gif",
   "full_video_sha256": "ad4968836f17fc204fb7faf8f7aa80616577076487f4b34e1d582aa36c3b58d2",
-  "preview_sha256": "2b5f0f1d4cbf2b46fd9285743217cdbe71298c170933f8fae90350ef1ed1bbab",
+  "preview_sha256": "7dff2bfbe3d7af2f447f8910d3efac44f1f69726365145edc28027e57158a6bd",
   "source_site": "https://funnyguy525.github.io/PURE-Page/#long"
 }
