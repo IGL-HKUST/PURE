@@ -1,26 +1,146 @@
 {
-  "passed": true,
-  "frames": 528,
-  "source_video": "pure-project-showcase/dist/assets/ride-long.mp4",
-  "source_seconds": 89.417422,
-  "preview_seconds": 89.42,
-  "preview_time_compressed": false,
-  "source_points_unchanged": true,
-  "source_video_frames": 2144,
-  "source_unique_reconstruction_frames": 2000,
-  "rgb_inset": true,
-  "full_overhead_reveal": true,
-  "bytes": 39651530,
-  "model": "PURE (DA3)",
-  "pose_source": "Camera Head",
-  "clip_frames": 128,
-  "overlap_frames": 1,
-  "render_camera_smoothed": true,
-  "geometry_unchanged_by_render_smoothing": true,
-  "pose_overlays": false,
+  "title": "PURE \u2014 results first / no drift",
+  "long_sequence": {
+    "model": "PURE (DA3)",
+    "pose_source": "Camera Head",
+    "chunk_size": 128,
+    "overlap": 1,
+    "unique_source_frames": 2000,
+    "filtered_points": 162682868,
+    "original_timestamps_preserved": false,
+    "source": "pure-da3-camera-128-256-near-rider-2000/128",
+    "smoothing": "display camera only; reconstructed geometry unchanged",
+    "geometry_seams_passed": 7,
+    "geometry_seams_total": 15,
+    "timing_note": "All 2,000 source frames preserved in order, one per output frame, at 30 fps (approximately 1.25\u00d7 original speed)."
+  },
+  "short_sequences": [
+    {
+      "scene": "motorcycle",
+      "model": "pi3",
+      "frames": 226,
+      "source": "pure-examples-all/results/motorcycle/videos-clean/pi3-streaming.mp4",
+      "camera_overlay": false,
+      "geometry_rerendered": false
+    },
+    {
+      "scene": "penguin",
+      "model": "da3",
+      "frames": 174,
+      "source": "pure-examples-all/results/penguin/videos-clean/da3-streaming.mp4",
+      "camera_overlay": false,
+      "geometry_rerendered": false
+    },
+    {
+      "scene": "sport",
+      "model": "vggt",
+      "frames": 207,
+      "source": "pure-examples-all/results/sport/videos-clean/vggt-streaming.mp4",
+      "camera_overlay": false,
+      "geometry_rerendered": false
+    },
+    {
+      "scene": "canyon",
+      "model": "pi3",
+      "frames": 121,
+      "source": "pure-twitter-reconstruction-all/results/filtered/videos-streaming/pi3-render.mp4",
+      "camera_overlay": false,
+      "geometry_rerendered": false
+    },
+    {
+      "scene": "jump",
+      "model": "vggt",
+      "frames": 121,
+      "source": "pure-twitter-video2-all/results/filtered/videos-streaming/vggt-render.mp4",
+      "camera_overlay": false,
+      "geometry_rerendered": false
+    }
+  ],
+  "public_input_source": {
+    "repository": "https://github.com/Self-Evo/SelfEvo",
+    "revision": "b0e0f4aa23627cb411167fdfd1f325dc774151fe",
+    "files": [
+      {
+        "path": "examples/motorcycle.mp4",
+        "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/motorcycle.mp4",
+        "bytes": 36280356,
+        "sha256": "99a7b1ebab027fc98684d28650711d39ee0e23e95b26a60d85856534da1dc866"
+      },
+      {
+        "path": "examples/penguin.mp4",
+        "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/penguin.mp4",
+        "bytes": 12901036,
+        "sha256": "45cb3d7f8dd3cfa3091bb28f067bbd77ed02bb793e99d2edf41963b079835ad2"
+      },
+      {
+        "path": "examples/sport.mp4",
+        "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/sport.mp4",
+        "bytes": 25875956,
+        "sha256": "72a59ae570d700f38df5ce954d494203b0a3dfc7705cc56494f139ed40a5aafe"
+      }
+    ]
+  },
+  "user_provided_inputs": [
+    "ridevideo.mp4",
+    "TwitterSaver.Net_d0Vvyg144t3d76gS_2160p.mp4",
+    "X_s1ddok_2110405142919119168_video2_4K.mp4"
+  ],
+  "presentation": {
+    "duration_seconds": 113.66666666666667,
+    "long_source_frames": 2000,
+    "long_source_fps": 30,
+    "long_output_fps": 30,
+    "long_output_frames": 2000,
+    "long_rgb_synchronization": "Exact source-frame index",
+    "language": "English",
+    "pose_overlay": false,
+    "geometry_changed": false,
+    "overview": "Existing full filtered point-cloud overhead image with a subtle 2D zoom",
+    "music": "Original synthesized electronic score; no third-party samples",
+    "method_diagrams": "Illustrative schematics",
+    "short_showcase_note": "Five short scenes, each once: motorcycle, penguins, sport, basketball close-up, basketball wide view. Drift segment removed.",
+    "display_names": {
+      "canyon": "Basketball / close-up",
+      "jump": "Basketball / wide view"
+    },
+    "order": [
+      "Full long reconstruction",
+      "Overhead view",
+      "Six short scenes",
+      "Method explanation",
+      "End card"
+    ]
+  },
+  "method_reference": "pure-pi3-release/docs/METHOD.md",
+  "edit": {
+    "from": "pure-promo-film-20261018-v5/PURE-promo-silent.mp4",
+    "removed_source_output_frames": [
+      2540,
+      2600
+    ],
+    "interval_semantics": "start inclusive, end exclusive",
+    "scene_counter_updated": "Five short scenes",
+    "other_imagery": "Same frames, re-encoded with updated progress line; no new geometry render"
+  },
+  "published_encoding": {
+    "passed": true,
+    "source_sha256": "51908ca4134c5bf0a51787a86b71c27340739c146bab58ecb7b33fcdd1a5deda",
+    "frames": 3410,
+    "fps": 30,
+    "seconds": 113.66666666666667,
+    "width": 1920,
+    "height": 1080,
+    "video_bytes": 66274599,
+    "video_sha256": "d2a65fe0ca51b1ee6a2c23e02a69b590468454cf7334b41642ee53fca7c05788",
+    "gif_seconds": 113.67,
+    "gif_fps": 6,
+    "gif_bytes": 37601307,
+    "gif_sha256": "c2f091973dea872ea986eacc94779a56b8663c89910c3a3c99fe58babbf7e5db",
+    "drift_removed": true,
+    "audio_samples": 5456000,
+    "audio_peak": 0.8009714484214783
+  },
   "full_video": "teaser.mp4",
   "preview": "teaser.gif",
-  "full_video_sha256": "ad4968836f17fc204fb7faf8f7aa80616577076487f4b34e1d582aa36c3b58d2",
-  "preview_sha256": "7dff2bfbe3d7af2f447f8910d3efac44f1f69726365145edc28027e57158a6bd",
   "source_site": "https://funnyguy525.github.io/PURE-Page/#long"
 }

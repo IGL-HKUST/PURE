@@ -41,13 +41,14 @@
 </p>
 
 <p align="center">
-  <a href="https://funnyguy525.github.io/PURE-Page/#long"><img src="assets/teaser.gif" alt="PURE long-sequence reconstruction: 2,000 consecutive frames with RGB input and a final overhead reveal" width="100%"></a>
+  <a href="https://funnyguy525.github.io/PURE-Page/#long"><img src="assets/teaser.gif" alt="PURE full film: 2,000-frame reconstruction, five short scenes and unlabeled post-training" width="100%"></a>
 </p>
 
 <p align="center">
-  <b>PURE (DA3) · 2,000-frame video reconstruction</b><br>
-  The complete 89-second reconstruction at original speed, with RGB input and a final overhead reveal.<br>
-  <a href="https://funnyguy525.github.io/PURE-Page/#long">Watch on the project page</a> · <a href="assets/teaser.mp4">Download full MP4 (89 seconds)</a>
+  <b>PURE · From unlabeled video to dynamic 3D</b><br>
+  Full 1:54 film: 2,000-frame reconstruction at 30 fps, overhead view, five short scenes, then the method.<br>
+  RGB input is included. The animated preview covers the full film at 6 fps; the MP4 is 1080p / 30 fps.<br>
+  <a href="https://funnyguy525.github.io/PURE-Page/#long">Watch on the project page</a> · <a href="assets/teaser.mp4">Download full MP4 (1:54)</a>
 </p>
 
 ## Pipeline
