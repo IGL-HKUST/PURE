@@ -126,122 +126,189 @@ def reconstruct(source, video, files, backbone, count, start, remove_sky, save_r
     )
 
 
+STUDIO_CSS = """
+#example-sidebar .grid-wrap { overflow: hidden !important; }
+#video-examples .grid-container {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: repeat(3, 74px) !important;
+    gap: 6px; padding: 28px 6px 6px !important;
+}
+#video-examples .thumbnail-item {
+    display: grid; grid-template-columns: 56% 1fr; align-items: center;
+    height: 74px; aspect-ratio: auto !important; padding: 0;
+}
+#video-examples .thumbnail-item img {
+    width: 100%; height: 74px; object-fit: contain !important;
+}
+#example-sidebar .caption-label {
+    position: static !important; max-width: none !important; width: auto;
+    white-space: normal; text-overflow: clip; overflow: visible;
+    padding: 8px; background: transparent; border-radius: 0;
+    font-size: 12px; line-height: 1.35; text-align: left;
+}
+#image-examples .grid-container {
+    grid-template-columns: 1fr !important; grid-template-rows: 152px !important;
+    padding: 28px 6px 6px !important;
+}
+#image-examples .thumbnail-item {
+    display: flex; flex-direction: column; justify-content: flex-start;
+    height: 152px; aspect-ratio: auto !important; padding: 0;
+}
+#image-examples .thumbnail-item img {
+    width: 100%; height: 114px; object-fit: contain !important;
+}
+#image-examples .caption-label { padding: 7px 4px; }
+"""
+
+
+def load_video_example(event: gr.SelectData):
+    name = ("motorcycle", "penguin", "sport")[int(event.index)]
+    return "Video", str(EXAMPLE_ROOT / f"{name}.mp4"), None, 16, 0
+
+
+def load_image_example(event: gr.SelectData):
+    images = sorted((EXAMPLE_ROOT / "drift-straight").glob("*.jpg"), key=natural_key)
+    return "Images", None, [str(path) for path in images], len(images), 0
+
+
 def build_app():
     with gr.Blocks(
         title="PURE Reconstruction Studio",
         theme=gr.themes.Soft(),
+        css=STUDIO_CSS,
         delete_cache=(3600, 86400),
     ) as demo:
         gr.Markdown(
             "# PURE Reconstruction Studio\nReconstruct depth, camera poses and a colored 3D point cloud with **PURE (Pi3) · PURE (DA3) · PURE (VGGT)**."
         )
         with gr.Row():
-            with gr.Column(scale=1):
-                source = gr.Radio(
-                    ["Video", "Images"], value="Video", label="Input type"
+            with gr.Column(scale=1, min_width=280, elem_id="example-sidebar"):
+                gr.Markdown("### Choose an example\nClick a scene to load it, then press **Reconstruct**.")
+                video_examples = gr.Gallery(
+                    value=[
+                        (str(EXAMPLE_ROOT / "studio-previews" / f"{name}.jpg"), label)
+                        for name, label in (
+                            ("motorcycle", "Motorcycle · 16 frames"),
+                            ("penguin", "Penguin · 16 frames"),
+                            ("sport", "Sport · 16 frames"),
+                        )
+                    ],
+                    label="Example videos",
+                    columns=1,
+                    rows=3,
+                    height=270,
+                    object_fit="contain",
+                    allow_preview=False,
+                    interactive=False,
+                    show_download_button=False,
+                    show_share_button=False,
+                    show_fullscreen_button=False,
+                    elem_id="video-examples",
                 )
-                video = gr.Video(label="Input video", sources=["upload"])
-                files = gr.File(
-                    label="Image sequence · natural filename order",
-                    file_count="multiple",
-                    file_types=[".png", ".jpg", ".jpeg", ".webp"],
-                    type="filepath",
-                    visible=False,
+                image_examples = gr.Gallery(
+                    value=[(
+                        str(EXAMPLE_ROOT / "studio-previews" / "drift-straight.jpg"),
+                        "Drift-straight · 10 images",
+                    )],
+                    label="Example images",
+                    columns=1,
+                    rows=1,
+                    height=200,
+                    object_fit="contain",
+                    allow_preview=False,
+                    interactive=False,
+                    show_download_button=False,
+                    show_share_button=False,
+                    show_fullscreen_button=False,
+                    elem_id="image-examples",
                 )
-                image_preview = gr.Gallery(
-                    label="Image sequence preview",
-                    columns=4,
-                    height=180,
-                    visible=False,
+            with gr.Column(scale=3, min_width=640):
+                with gr.Row():
+                    with gr.Column(scale=1):
+                        source = gr.Radio(
+                            ["Video", "Images"], value="Video", label="Input type"
+                        )
+                        video = gr.Video(label="Input video", sources=["upload"])
+                        files = gr.File(
+                            label="Image sequence · natural filename order",
+                            file_count="multiple",
+                            file_types=[".png", ".jpg", ".jpeg", ".webp"],
+                            type="filepath",
+                            visible=False,
+                        )
+                        image_preview = gr.Gallery(
+                            label="Image sequence preview",
+                            columns=4,
+                            height=180,
+                            visible=False,
+                        )
+                        files.change(
+                            lambda paths: sorted(paths or [], key=natural_key)[:12],
+                            inputs=files,
+                            outputs=image_preview,
+                            queue=False,
+                            api_name=False,
+                        )
+                        source.change(
+                            lambda x: (
+                                gr.update(visible=x == "Video"),
+                                gr.update(visible=x == "Images"),
+                                gr.update(visible=x == "Images"),
+                            ),
+                            inputs=source,
+                            outputs=[video, files, image_preview],
+                            queue=False,
+                        )
+                        backbone = gr.Dropdown(
+                            [(label, key) for key, label in MODEL_NAMES.items()],
+                            value="pi3",
+                            label="Model",
+                        )
+                        count = gr.Slider(
+                            2,
+                            MAX_FRAMES,
+                            value=48,
+                            step=1,
+                            label="Frames · consecutive for video",
+                        )
+                        start = gr.Number(
+                            value=0,
+                            precision=0,
+                            minimum=0,
+                            maximum=10000,
+                            label="First video frame",
+                        )
+                        remove_sky = gr.Checkbox(
+                            value=True, label="Remove sky from point cloud"
+                        )
+                        save_raw = gr.Checkbox(
+                            value=False, label="Include full raw predictions in ZIP (large)"
+                        )
+                        run = gr.Button("Reconstruct", variant="primary")
+                    with gr.Column(scale=2):
+                        cloud = gr.Model3D(
+                            label="3D preview · drag to rotate",
+                            height=480,
+                            clear_color=[0.06, 0.08, 0.12, 1.0],
+                        )
+                        status = gr.Markdown()
+                with gr.Row():
+                    rgb = gr.Video(label="Selected RGB frames", loop=True)
+                    depth = gr.Video(label="Relative depth · sky black", loop=True)
+                masks = gr.Gallery(
+                    label="Sky mask check", columns=4, height="auto", show_label=True
                 )
-                files.change(
-                    lambda paths: sorted(paths or [], key=natural_key)[:12],
-                    inputs=files,
-                    outputs=image_preview,
-                    queue=False,
-                    api_name=False,
-                )
-                source.change(
-                    lambda x: (
-                        gr.update(visible=x == "Video"),
-                        gr.update(visible=x == "Images"),
-                        gr.update(visible=x == "Images"),
-                    ),
-                    inputs=source,
-                    outputs=[video, files, image_preview],
-                    queue=False,
-                )
-                backbone = gr.Dropdown(
-                    [(label, key) for key, label in MODEL_NAMES.items()],
-                    value="pi3",
-                    label="Model",
-                )
-                count = gr.Slider(
-                    2,
-                    MAX_FRAMES,
-                    value=48,
-                    step=1,
-                    label="Frames · consecutive for video",
-                )
-                start = gr.Number(
-                    value=0,
-                    precision=0,
-                    minimum=0,
-                    maximum=10000,
-                    label="First video frame",
-                )
-                remove_sky = gr.Checkbox(
-                    value=True, label="Remove sky from point cloud"
-                )
-                save_raw = gr.Checkbox(
-                    value=False, label="Include full raw predictions in ZIP (large)"
-                )
-                run = gr.Button("Reconstruct", variant="primary")
-            with gr.Column(scale=2):
-                cloud = gr.Model3D(
-                    label="3D preview · drag to rotate",
-                    height=480,
-                    clear_color=[0.06, 0.08, 0.12, 1.0],
-                )
-                status = gr.Markdown()
-        with gr.Row():
-            rgb = gr.Video(label="Selected RGB frames", loop=True)
-            depth = gr.Video(label="Relative depth · sky black", loop=True)
-        masks = gr.Gallery(
-            label="Sky mask check", columns=4, height="auto", show_label=True
+                with gr.Row():
+                    ply = gr.File(label="Full filtered point cloud · PLY")
+                    cameras = gr.File(label="Camera poses · NPZ")
+                    archive = gr.File(label="All outputs · ZIP")
+        example_inputs = [source, video, files, count, start]
+        video_examples.select(
+            load_video_example, outputs=example_inputs, queue=False, api_name=False
         )
-        with gr.Row():
-            ply = gr.File(label="Full filtered point cloud · PLY")
-            cameras = gr.File(label="Camera poses · NPZ")
-            archive = gr.File(label="All outputs · ZIP")
-        with gr.Accordion("Try an example video or image sequence", open=True):
-            gr.Markdown("Select an example to fill the inputs, then click **Reconstruct**.")
-            example_inputs = [source, video, files, count, start]
-            gr.Examples(
-                examples=[
-                    ["Video", str(EXAMPLE_ROOT / f"{name}.mp4"), None, 16, 0]
-                    for name in ("motorcycle", "penguin", "sport")
-                ],
-                inputs=example_inputs,
-                label="Example videos",
-                example_labels=["Motorcycle · 16 frames", "Penguin · 16 frames", "Sport · 16 frames"],
-                cache_examples=False,
-                run_on_click=False,
-                elem_id="video-examples",
-            )
-            gr.Examples(
-                examples=[[
-                    "Images", None,
-                    [str(p) for p in sorted((EXAMPLE_ROOT / "drift-straight").glob("*.jpg"), key=natural_key)],
-                    10, 0,
-                ]],
-                inputs=example_inputs,
-                label="Example images",
-                example_labels=["Drift-straight · 10 images"],
-                cache_examples=False,
-                run_on_click=False,
-                elem_id="image-examples",
-            )
+        image_examples.select(
+            load_image_example, outputs=example_inputs, queue=False, api_name=False
+        )
         gr.Markdown(
             "Preview: sampled points with the farthest 1% removed. PLY: all valid non-sky points. Depth and translation use relative scale; moving objects may leave ghosts."
         )
