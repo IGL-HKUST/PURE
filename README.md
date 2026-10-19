@@ -4,6 +4,7 @@
   <a href="https://arxiv.org/abs/2610.14698"><img src="https://img.shields.io/badge/arXiv-2610.14698-b31b1b.svg" alt="arXiv Paper"></a> &nbsp;
   <a href="https://funnyguy525.github.io/PURE-Page/"><img src="https://img.shields.io/badge/Project-Page-Green" alt="Project Page"></a> &nbsp;
   <a href="https://huggingface.co/cyun9286/PURE"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Weights-blue" alt="Hugging Face Weights"></a>
+  &nbsp; <a href="https://huggingface.co/spaces/cyun9286/PURE-Studio"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Studio-Try%20the%20Demo-orange" alt="Open PURE Studio"></a>
 </p>
 
 <div align="center">
@@ -61,6 +62,13 @@
 ## Demo
 
 ### Web app
+
+**[Open PURE Reconstruction Studio →](https://huggingface.co/spaces/cyun9286/PURE-Studio)**
+
+Try the bundled Motorcycle, Penguin and Sport videos, or the Drift-straight
+sequence of ten images. Selecting an example fills the inputs; click
+**Reconstruct** to generate the 3D preview, point cloud, depth and camera poses.
+The hosted Space runs on free ZeroGPU, subject to your Hugging Face GPU quota.
 
 Linux, Python 3.11 and a CUDA GPU. From the repository root:
 

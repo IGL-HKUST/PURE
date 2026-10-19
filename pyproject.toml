@@ -12,7 +12,7 @@ dependencies = ["torch>=2.1"]
 [project.optional-dependencies]
 training = ["torch>=2.2", "numpy>=1.24,<2", "Pillow>=10", "safetensors>=0.4", "addict>=2.4", "einops>=0.7"]
 inference = ["torch>=2.2,<3", "numpy>=1.24,<2", "Pillow>=10,<12", "safetensors>=0.4", "huggingface-hub>=0.34,<1", "addict>=2.4", "einops>=0.7", "av>=12,<20", "matplotlib>=3.8", "trimesh>=4.8,<5", "transformers==4.46.3"]
-space = ["pure-posttraining[inference]", "torch==2.6.0", "gradio==5.49.1"]
+space = ["pure-posttraining[inference]", "torch==2.8.0", "gradio==5.49.1", "spaces>=0.48.1,<1"]
 test = ["pytest>=8", "httpx>=0.27"]
 
 [tool.setuptools]

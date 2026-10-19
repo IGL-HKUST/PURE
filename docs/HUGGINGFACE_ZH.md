@@ -51,3 +51,17 @@ python scripts/hub/upload.py --folder hf_models --repo-id cyun9286/PURE
 
 安装本项目后，可用 `PURE.from_pretrained("hf_models", subfolder="pi3")` 加载本地模型，
 或用 Hub ID 加载，支持 revision、缓存和 token。`save_pretrained()` 保存到空目录。
+## 在线 PURE Studio
+
+已部署的演示：<https://huggingface.co/spaces/cyun9286/PURE-Studio>。
+
+支持三个视频示例（Motorcycle、Penguin、Sport）和 Drift-straight 的 10 张图片。
+点击示例会填入输入并切换输入类型，图片会显示缩略图；点击 Reconstruct 才会申请 GPU。
+视频示例默认处理 16 个连续帧，图片示例处理全部 10 张图片，均可调整模型和帧数。
+
+仓库根目录的 `app.py` 是通用 CUDA 入口，`space_app.py` 是 ZeroGPU 入口。
+ZeroGPU 版本使用 Python 3.10.13、PyTorch 2.8.0、Gradio 5.49.1 和 `spaces`；
+模型及天空分割权重先下载到缓存，再按帧数申请 GPU 时长，GPU 额度由 Hugging Face 管理。
+部署为 Gradio Space 时将 `app_file` 设为 `space_app.py`，并使用根目录
+`requirements.txt` 安装依赖。示例来自 SelfEvo，原始链接和校验值见
+`examples/reconstruction/sources.json`。

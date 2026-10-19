@@ -1,2 +1,15 @@
-# Hugging Face Spaces build entry; core users can install -e . instead.
--e .[space]
+# Spaces installs requirements before copying the application source.
+# Import the bundled pure/ package from the application directory at runtime.
+torch==2.8.0
+numpy>=1.24,<2
+Pillow>=10,<12
+safetensors>=0.4
+huggingface-hub>=0.34,<1
+addict>=2.4
+einops>=0.7
+av>=12,<20
+matplotlib>=3.8
+trimesh>=4.8,<5
+transformers==4.46.3
+gradio==5.49.1
+spaces>=0.48.1,<1

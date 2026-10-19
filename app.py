@@ -21,6 +21,7 @@ OUTPUT_ROOT = Path(
     os.environ.get("PURE_OUTPUT_DIR", tempfile.gettempdir() + "/pure-studio")
 ).resolve()
 MAX_FRAMES = 48
+EXAMPLE_ROOT = Path(__file__).resolve().parent / "examples"
 MODEL_NAMES = {"pi3": "PURE (Pi3)", "da3": "PURE (DA3)", "vggt": "PURE (VGGT)"}
 _LOCK = threading.Lock()
 _CACHED = None
@@ -147,13 +148,27 @@ def build_app():
                     type="filepath",
                     visible=False,
                 )
+                image_preview = gr.Gallery(
+                    label="Image sequence preview",
+                    columns=4,
+                    height=180,
+                    visible=False,
+                )
+                files.change(
+                    lambda paths: sorted(paths or [], key=natural_key)[:12],
+                    inputs=files,
+                    outputs=image_preview,
+                    queue=False,
+                    api_name=False,
+                )
                 source.change(
                     lambda x: (
                         gr.update(visible=x == "Video"),
                         gr.update(visible=x == "Images"),
+                        gr.update(visible=x == "Images"),
                     ),
                     inputs=source,
-                    outputs=[video, files],
+                    outputs=[video, files, image_preview],
                     queue=False,
                 )
                 backbone = gr.Dropdown(
@@ -199,6 +214,34 @@ def build_app():
             ply = gr.File(label="Full filtered point cloud · PLY")
             cameras = gr.File(label="Camera poses · NPZ")
             archive = gr.File(label="All outputs · ZIP")
+        with gr.Accordion("Try an example video or image sequence", open=True):
+            gr.Markdown("Select an example to fill the inputs, then click **Reconstruct**.")
+            example_inputs = [source, video, files, count, start]
+            gr.Examples(
+                examples=[
+                    ["Video", str(EXAMPLE_ROOT / f"{name}.mp4"), None, 16, 0]
+                    for name in ("motorcycle", "penguin", "sport")
+                ],
+                inputs=example_inputs,
+                label="Example videos",
+                example_labels=["Motorcycle · 16 frames", "Penguin · 16 frames", "Sport · 16 frames"],
+                cache_examples=False,
+                run_on_click=False,
+                elem_id="video-examples",
+            )
+            gr.Examples(
+                examples=[[
+                    "Images", None,
+                    [str(p) for p in sorted((EXAMPLE_ROOT / "drift-straight").glob("*.jpg"), key=natural_key)],
+                    10, 0,
+                ]],
+                inputs=example_inputs,
+                label="Example images",
+                example_labels=["Drift-straight · 10 images"],
+                cache_examples=False,
+                run_on_click=False,
+                elem_id="image-examples",
+            )
         gr.Markdown(
             "Preview: sampled points with the farthest 1% removed. PLY: all valid non-sky points. Depth and translation use relative scale; moving objects may leave ghosts."
         )

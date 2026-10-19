@@ -1,5 +1,10 @@
 # Demo
 
+**[Try these examples in PURE Studio](https://huggingface.co/spaces/cyun9286/PURE-Studio)**:
+select one of the three example videos or the ten-image Drift-straight sequence,
+then click **Reconstruct**. Example videos start with 16 consecutive frames;
+the image example uses all ten images. You can change the model and frame count.
+
 Three videos and ten drift-straight images from [SelfEvo](https://github.com/Self-Evo/SelfEvo)
 are bundled here. [sources.json](reconstruction/sources.json) pins the upstream
 revision and records every original URL, size and SHA256.
