@@ -41,13 +41,13 @@
 </p>
 
 <p align="center">
-  <a href="https://funnyguy525.github.io/PURE-Page/#long"><img src="assets/teaser-15fps.gif" alt="PURE 15 fps preview: growing overhead map expands into the complete 3D reconstruction" width="100%"></a>
+  <a href="https://funnyguy525.github.io/PURE-Page/#long"><img src="assets/teaser-15fps-v2.gif" alt="PURE 15 fps preview: growing overhead map expands into the complete 3D reconstruction" width="100%"></a>
 </p>
 
 <p align="center">
   <b>PURE · From unlabeled video to dynamic 3D</b><br>
   Full 1:54 film: 2,000-frame reconstruction at 30 fps, overhead view, five short scenes, then the method.<br>
-  13-second animated preview at 15 fps: a growing overhead map expands into the complete scene.<br>
+  13-second animated preview at 15 fps: more reconstruction, followed by a brief overhead reveal.<br>
   The full MP4 is 1080p / 30 fps, with synchronized RGB input.<br>
   <a href="https://funnyguy525.github.io/PURE-Page/#long">Watch on the project page</a> · <a href="assets/teaser.mp4">Download full MP4 (1:54)</a>
 </p>
