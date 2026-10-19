@@ -55,7 +55,7 @@ python scripts/hub/upload.py --folder hf_models --repo-id cyun9286/PURE
 
 已部署的演示：<https://huggingface.co/spaces/cyun9286/PURE-Studio>。
 
-支持三个视频示例（Motorcycle、Penguin、Sport）和 Drift-straight 的 10 张图片。
+支持五个视频示例（Motorcycle、Penguin、Sport、Basketball close-up、Basketball wide view）和 Drift-straight 的 10 张图片。
 点击示例会填入输入并切换输入类型，图片会显示缩略图；点击 Reconstruct 才会申请 GPU。
 视频示例默认处理 16 个连续帧，图片示例处理全部 10 张图片，均可调整模型和帧数。
 
@@ -63,5 +63,5 @@ python scripts/hub/upload.py --folder hf_models --repo-id cyun9286/PURE
 ZeroGPU 版本使用 Python 3.10.13、PyTorch 2.8.0、Gradio 5.49.1 和 `spaces`；
 模型及天空分割权重先下载到缓存，再按帧数申请 GPU 时长，GPU 额度由 Hugging Face 管理。
 部署为 Gradio Space 时将 `app_file` 设为 `space_app.py`，并使用根目录
-`requirements.txt` 安装依赖。示例来自 SelfEvo，原始链接和校验值见
+`requirements.txt` 安装依赖。示例来自 SelfEvo 及项目主页的两个篮球原始视频，来源和校验值见
 `examples/reconstruction/sources.json`。

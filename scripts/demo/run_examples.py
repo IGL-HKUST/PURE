@@ -75,8 +75,9 @@ def build_plan(args, manifest):
 
 
 def main():
+    manifest = json.loads(MANIFEST.read_text())
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--sample', choices=['motorcycle', 'penguin', 'sport', 'drift-straight', 'all'], default='motorcycle')
+    parser.add_argument('--sample', choices=[case['name'] for case in manifest['cases']] + ['all'], default='motorcycle')
     parser.add_argument('--model', choices=['pi3', 'da3', 'vggt', 'all'], default='pi3')
     parser.add_argument('--pretrained', default=os.environ.get('PURE_MODEL_REPO', 'cyun9286/PURE'))
     parser.add_argument('--inputs', type=Path, default=ROOT / 'examples')
@@ -91,7 +92,7 @@ def main():
     args = parser.parse_args()
     if not 2 <= args.frames <= 48:
         parser.error('--frames must be between 2 and 48')
-    downloads, commands = build_plan(args, json.loads(MANIFEST.read_text()))
+    downloads, commands = build_plan(args, manifest)
     if args.dry_run:
         for info, target in downloads:
             print(json.dumps({'download': info['url'], 'destination': str(target), 'sha256': info['sha256']}))

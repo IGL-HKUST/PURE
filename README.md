@@ -65,7 +65,7 @@
 
 **[Open PURE Reconstruction Studio →](https://huggingface.co/spaces/cyun9286/PURE-Studio)**
 
-Try the bundled Motorcycle, Penguin and Sport videos, or the Drift-straight
+Try the bundled Motorcycle, Penguin, Sport, Basketball close-up and Basketball wide view videos, or the Drift-straight
 sequence of ten images. Selecting an example fills the inputs; click
 **Reconstruct** to generate the 3D preview, point cloud, depth and camera poses.
 The hosted Space runs on free ZeroGPU, subject to your Hugging Face GPU quota.
@@ -88,10 +88,10 @@ Run the bundled demos from the repository root:
 ```bash
 pip install -e '.[inference]'
 bash scripts/demo/run_demo.sh                         # Motorcycle + PURE (Pi3)
-bash scripts/demo/run_demo.sh --sample all --model all # Four samples × three models
+bash scripts/demo/run_demo.sh --sample all --model all # Six samples × three models
 ```
 
-Use `--sample motorcycle|penguin|sport|drift-straight` and `--model pi3|da3|vggt` to select a demo. Results go to `outputs/demo/<sample>-<model>/`; use `--output` for a new run or `--dry-run` to inspect commands. Videos use the first 48 consecutive frames; drift-straight uses all 10 images.
+Use `--sample motorcycle|penguin|sport|basketball-close-up|basketball-wide-view|drift-straight` and `--model pi3|da3|vggt` to select a demo. Results go to `outputs/demo/<sample>-<model>/`; use `--output` for a new run or `--dry-run` to inspect commands. Videos use the first 48 consecutive frames; drift-straight uses all 10 images.
 
 For your own video:
 

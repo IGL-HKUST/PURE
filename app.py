@@ -22,6 +22,13 @@ OUTPUT_ROOT = Path(
 ).resolve()
 MAX_FRAMES = 48
 EXAMPLE_ROOT = Path(__file__).resolve().parent / "examples"
+VIDEO_EXAMPLES = (
+    ("motorcycle", "Motorcycle"),
+    ("penguin", "Penguin"),
+    ("sport", "Sport"),
+    ("basketball-close-up", "Basketball close-up"),
+    ("basketball-wide-view", "Basketball wide view"),
+)
 MODEL_NAMES = {"pi3": "PURE (Pi3)", "da3": "PURE (DA3)", "vggt": "PURE (VGGT)"}
 _LOCK = threading.Lock()
 _CACHED = None
@@ -130,7 +137,7 @@ STUDIO_CSS = """
 #example-sidebar .grid-wrap { overflow: hidden !important; }
 #video-examples .grid-container {
     grid-template-columns: 1fr !important;
-    grid-template-rows: repeat(3, 74px) !important;
+    grid-template-rows: repeat(5, 74px) !important;
     gap: 6px; padding: 28px 6px 6px !important;
 }
 #video-examples .thumbnail-item {
@@ -162,7 +169,7 @@ STUDIO_CSS = """
 
 
 def load_video_example(event: gr.SelectData):
-    name = ("motorcycle", "penguin", "sport")[int(event.index)]
+    name = VIDEO_EXAMPLES[int(event.index)][0]
     return "Video", str(EXAMPLE_ROOT / f"{name}.mp4"), None, 16, 0
 
 
@@ -186,17 +193,13 @@ def build_app():
                 gr.Markdown("### Choose an example\nClick a scene to load it, then press **Reconstruct**.")
                 video_examples = gr.Gallery(
                     value=[
-                        (str(EXAMPLE_ROOT / "studio-previews" / f"{name}.jpg"), label)
-                        for name, label in (
-                            ("motorcycle", "Motorcycle · 16 frames"),
-                            ("penguin", "Penguin · 16 frames"),
-                            ("sport", "Sport · 16 frames"),
-                        )
+                        (str(EXAMPLE_ROOT / "studio-previews" / f"{name}.jpg"), f"{label} · 16 frames")
+                        for name, label in VIDEO_EXAMPLES
                     ],
                     label="Example videos",
                     columns=1,
-                    rows=3,
-                    height=270,
+                    rows=len(VIDEO_EXAMPLES),
+                    height=430,
                     object_fit="contain",
                     allow_preview=False,
                     interactive=False,

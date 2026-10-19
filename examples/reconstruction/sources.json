@@ -79,6 +79,35 @@
       "url": "https://raw.githubusercontent.com/Self-Evo/SelfEvo/b0e0f4aa23627cb411167fdfd1f325dc774151fe/examples/sport.mp4",
       "bytes": 25875956,
       "sha256": "72a59ae570d700f38df5ce954d494203b0a3dfc7705cc56494f139ed40a5aafe"
+    },
+    {
+      "path": "examples/basketball-close-up.mp4",
+      "url": "https://raw.githubusercontent.com/IGL-HKUST/PURE/main/examples/basketball-close-up.mp4",
+      "source": "User-provided original video used on the PURE project page",
+      "original_filename": "TwitterSaver.Net_d0Vvyg144t3d76gS_2160p.mp4",
+      "project_page": "https://funnyguy525.github.io/PURE-Page/",
+      "project_page_scene": "canyon",
+      "bytes": 11677999,
+      "sha256": "16517b7881aa1ec2d70e7f27ea8e303d729cbe9d5b93bc02b80c1074a5b7a20e",
+      "width": 3840,
+      "height": 2160,
+      "fps": 24,
+      "total_frames": 121
+    },
+    {
+      "path": "examples/basketball-wide-view.mp4",
+      "url": "https://raw.githubusercontent.com/IGL-HKUST/PURE/main/examples/basketball-wide-view.mp4",
+      "source": "User-provided original video used on the PURE project page",
+      "original_filename": "X_s1ddok_2110405142919119168_video2_4K.mp4",
+      "project_page": "https://funnyguy525.github.io/PURE-Page/",
+      "project_page_scene": "jump",
+      "bytes": 14296958,
+      "sha256": "87b84e62d3f5687238cdac418334f8abdd31389a2b66c0c562ede9792ec84213",
+      "width": 3840,
+      "height": 2160,
+      "fps": 24,
+      "total_frames": 121,
+      "original_url": "https://x.com/s1ddok/status/2110405142919119168/video/2"
     }
   ],
   "cases": [
@@ -101,6 +130,18 @@
       "name": "drift-straight",
       "kind": "image_sequence",
       "frame_count": 10
+    },
+    {
+      "name": "basketball-close-up",
+      "label": "Basketball close-up",
+      "kind": "video",
+      "frame_count": 48
+    },
+    {
+      "name": "basketball-wide-view",
+      "label": "Basketball wide view",
+      "kind": "video",
+      "frame_count": 48
     }
   ]
 }
